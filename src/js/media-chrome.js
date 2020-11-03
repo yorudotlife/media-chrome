@@ -1,62 +1,12 @@
+import controlsTemplateHtml from './media-chrome-controls.html';
 import MediaChromeElement from './media-chrome-element.js';
+import templateHtml from './media-chrome.html';
 import './media-control-bar.js';
+import { createTemplate } from './utils/createTemplate.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
-const template = document.createElement('template');
-
-template.innerHTML = `
-  <style>
-    :host {
-      box-sizing: border-box;
-
-      position: relative;
-      display: flex;
-      width: 720px;
-      height: 480px;
-      background-color: #000;
-      flex-direction: column-reverse;
-    }
-
-    ::slotted([slot=media]) {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-    }
-
-    #container ::slotted(*) {
-      opacity: 1;
-      transition: opacity 0.25s;
-      visibility: visible;
-    }
-
-    /* Hide controls when inactive and not paused */
-    #container.inactive:not(.paused) ::slotted(*) {
-      opacity: 0;
-      transition: opacity 1s;
-    }
-  </style>
-  <slot name="media"></slot>
-  <div id="container">
-    <slot></slot>
-    <slot name="controls"></slot>
-  </div>
-`;
-
-const controlsTemplate = document.createElement('template');
-
-controlsTemplate.innerHTML = `
-  <media-control-bar>
-    <media-play-button>Play</media-play-button>
-    <media-mute-button>Mute</media-mute-button>
-    <media-volume-range>Volume</media-volume-range>
-    <media-progress-range>Progress</media-progress-range>
-    <media-pip-button>PIP</media-pip-button>
-    <media-fullscreen-button>Fullscreen</media-fullscreen-button>
-  </media-control-bar>
-`;
+const template = createTemplate(templateHtml);
+const controlsTemplate = createTemplate(controlsTemplateHtml);
 
 class MediaChrome extends HTMLElement {
   constructor() {

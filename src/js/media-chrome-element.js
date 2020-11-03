@@ -7,7 +7,7 @@ class MediaChromeElement extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['media'].concat(super.observedAttributes || []);
+    return ['media'];
   }
 
   // Model the basic HTML attribute functionality of matching props

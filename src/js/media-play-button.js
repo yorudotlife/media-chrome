@@ -14,7 +14,7 @@ class MediaPlayButton extends MediaChromeButton {
   }
 
   static get observedAttributes() {
-    return ['playing'].concat(super.observedAttributes || []);
+    return ['playing', ...super.observedAttributes];
   }
 
   get playing() {
