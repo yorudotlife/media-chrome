@@ -5,6 +5,7 @@ import fs from 'fs';
 import gulp from 'gulp';
 // rollup
 import * as rollupPkg from 'rollup';
+import html from 'rollup-plugin-html';
 import rollupPluginTerser from 'rollup-plugin-terser';
 
 const { series, watch } = gulp;
@@ -20,6 +21,15 @@ export async function build() {
     plugins: [
       commonjs(),
       resolve(),
+      html({
+        include: '**/*.html',
+        htmlMinifierOptions: {
+          collapseWhitespace: true,
+          collapseBooleanAttributes: true,
+          minifyJS: true,
+          minifyCSS: true,
+        }
+      }),
       terser(),
     ]
   });

@@ -1,24 +1,9 @@
 import videojs from 'video.js';
+import { createTemplate } from './utils/createTemplate.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
-import styles from './video-js-styles.js';
+import templateHtml from './video-js-element.html';
 
-const template = document.createElement('template');
-
-template.innerHTML = `
-  <style>
-  ${styles}
-
-  div.video-js {
-    width: 100%;
-    height: 100%;
-  }
-  </style>
-
-  <video class="video-js" controls id="my-player"
-    preload="auto">
-   <source src="http://localhost:8000/fhqwhgads.mp4" />
-  </video>
-`;
+const template = createTemplate(templateHtml);
 
 class VideoJSElement extends HTMLElement {
   constructor() {

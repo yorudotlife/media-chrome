@@ -1,23 +1,9 @@
 import MediaChromeElement from './media-chrome-element.js';
+import templateHtml from './media-chrome-popup.html';
+import { createTemplate } from './utils/createTemplate.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
-const template = document.createElement('template');
-
-template.innerHTML = `
-  <style>
-    :host {
-      display: block;
-      position: absolute;
-      width: 300px;
-      height: 200px;
-      padding: 10px;
-      border: 1px solid #333;
-      color: #fff;
-      background-color: #000;
-    }
-  </style>
-  <slot></slot>
-`;
+const template = createTemplate(templateHtml);
 
 class MediaChromePopup extends MediaChromeElement {
   constructor() {

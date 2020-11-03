@@ -1,46 +1,16 @@
 // IN PROGRESS
-
 import MediaChromeElement from './media-chrome-element.js';
+import templateHtml from './media-chrome-poster.html';
+import { createTemplate } from './utils/createTemplate.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
-const template = document.createElement('template');
-
-template.innerHTML = `
-<style>
-  :host {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
-  #poster {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    background-color: #000;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    transition: opacity 0.2s ease;
-    opacity: 1;
-  }
-
-  #poster.hidden {
-    display: none;
-    opacity: 0;
-  }
-</style>
-<div id="poster"></div>
-`;
+const template = createTemplate(templateHtml);
 
 class MediaPoster extends MediaChromeElement {
   constructor() {
     super();
 
-    var shadow = this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.addEventListener('click', e => {

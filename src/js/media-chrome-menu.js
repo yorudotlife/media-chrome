@@ -1,22 +1,11 @@
 import MediaChromeElement from './media-chrome-element.js';
+import templateHtml from './media-chrome-menu.html';
 import './media-chrome-menuitem.js';
 import './media-chrome-submenu-menuitem.js';
+import { createTemplate } from './utils/createTemplate.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
-const template = document.createElement('template');
-
-template.innerHTML = `
-  <style>
-    :host {
-      display: block;
-      position: relative;
-      width: 100%;
-      border: 1px solid #f00;
-      background-color: #000;
-    }
-  </style>
-  <slot></slot>
-`;
+const template = createTemplate(templateHtml);
 
 class MediaChromeMenu extends MediaChromeElement {
   constructor() {

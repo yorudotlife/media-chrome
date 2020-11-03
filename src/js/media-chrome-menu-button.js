@@ -1,46 +1,10 @@
 import MediaChromeButton from './media-chrome-button.js';
+import templateHtml from './media-chrome-menu-button.html';
 import './media-chrome-menuitem.js';
+import { createTemplate } from './utils/createTemplate.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
-const template = document.createElement('template');
-
-template.innerHTML = `
-<style>
-  #menuPositioner {
-    position: absolute;
-    display: flex;
-
-    border: 1px solid #f00;
-
-    /* Align menu top and centered */
-    top: 0;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  #menuContainer {
-    display: none;
-    position: absolute;
-    bottom: 0;
-    align: center;
-    margin-bottom: 20px;
-
-    border: 1px solid #999;
-    background-color: #111;
-  }
-
-  slot[name=menu] {
-
-  }
-</style>
-
-<div id="menuPositioner">
-  <div id="menuContainer">
-    <slot name="menu"></slot>
-  </div>
-</div>
-`;
+const template = createTemplate(templateHtml);
 
 class MediaChromeMenuButton extends MediaChromeButton {
   constructor() {

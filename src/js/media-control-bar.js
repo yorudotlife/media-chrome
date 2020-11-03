@@ -2,6 +2,7 @@ import MediaChromeElement from './media-chrome-element.js';
 import './media-chrome-menu-button.js';
 import './media-chrome-menu.js';
 import './media-chrome-popup.js';
+import templateHtml from './media-control-bar.html';
 import './media-current-time-display.js';
 import './media-duration-display.js';
 import './media-forward-button.js';
@@ -13,39 +14,10 @@ import './media-progress-range.js';
 import './media-replay-button.js';
 import './media-settings-popup.js';
 import './media-volume-range.js';
+import { createTemplate } from './utils/createTemplate.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
-const template = document.createElement('template');
-
-template.innerHTML = `
-  <style>
-    :host {
-      /* Need position to display above video for some reason */
-      position: relative;
-      box-sizing: border-box;
-      display: flex;
-
-      /* All putting the progress range at full width on other lines */
-      flex-wrap: wrap;
-
-      width: 100%;
-      color: var(--media-icon-color, #eee);
-
-      background-color: var(--media-control-bar-background, rgba(20,20,30, 0.7));
-    }
-
-    ::slotted(*), :host > * {
-      /* position: relative; */
-    }
-
-    media-progress-range,
-    ::slotted(media-progress-range) {
-      flex-grow: 1;
-    }
-  </style>
-
-  <slot></slot>
-`;
+const template = createTemplate(templateHtml);
 
 const controlsTemplate = document.createElement('template');
 
