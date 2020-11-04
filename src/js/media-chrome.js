@@ -98,19 +98,15 @@ class MediaChrome extends HTMLElement {
     }
 
     function propagteNewMedia(media) {
-      this.querySelectorAll('*').forEach(el => {
-
+      const applyMedia = el => {
         if (el instanceof MediaChromeElement) {
           // Media should be settable at this point.
           el.media = this.media;
         }
-      });
+      };
 
-      this.shadowRoot.querySelectorAll('*').forEach(el => {
-        if (el instanceof MediaChromeElement) {
-          el.media = this.media;
-        }
-      });
+      this.querySelectorAll('*').forEach(applyMedia);
+      this.shadowRoot.querySelectorAll('*').forEach(applyMedia);
     }
   }
 
