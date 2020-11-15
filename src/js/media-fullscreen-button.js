@@ -15,6 +15,19 @@ const exitFullscreenIcon = `
 </svg>
 `;
 
+const safari = document.fullscreenEnabled !== 'undefined'
+
+let fullscreenAPI = {
+  fullscreenEnabled: 'fullscreenEnabled',
+  fullscreenElement: 'fullscreenElement',
+  exitFullscreen: 'exitFullscreen',
+  requestFullscreen: 'requestFullscreen',
+}
+
+if (typeof document.fullscreenEnabled !== 'undefined') {
+
+}
+
 class MediaFullscreenButton extends MediaChromeButton {
   constructor() {
     super();
@@ -23,6 +36,8 @@ class MediaFullscreenButton extends MediaChromeButton {
 
     this.addEventListener("click", e => {
       const media = this.media;
+
+      console.log(document.webkitFullscreenElement);
 
       if (this.mediaChrome == document.fullscreenElement) {
         document.exitFullscreen();
