@@ -15,18 +15,22 @@ const exitFullscreenIcon = `
 </svg>
 `;
 
-const safari = document.fullscreenEnabled !== 'undefined'
+const useWebkitApi = document.fullscreenEnabled === undefined
+  && document.webkitFullscreenEnabled !== undefined;
 
-let fullscreenAPI = {
-  fullscreenEnabled: 'fullscreenEnabled',
-  fullscreenElement: 'fullscreenElement',
-  exitFullscreen: 'exitFullscreen',
-  requestFullscreen: 'requestFullscreen',
-}
+const webkitApiMap = {
+  'fullscreenEnabled': 'webkitFullscreenEnabled',
+  'fullscreenElement': 'webkitFullscreenElement',
+  'exitFullscreen': 'webkitExitFullscreen',
+  'requestFullscreen': 'webkitRequestFullscreen',
+  'fullscreenchange': 'webkitfullscreenchange',
+  'fullscreenerror': 'webkitfullscreenerror',
+};
 
-if (typeof document.fullscreenEnabled !== 'undefined') {
-
-}
+const fsApi = {};
+Object.keys(webkitApiMap).forEach(term => {
+  fsApi[term] = useWebkitApi ? webkitApiMap[term] : term;
+});
 
 class MediaFullscreenButton extends MediaChromeButton {
   constructor() {
@@ -37,22 +41,20 @@ class MediaFullscreenButton extends MediaChromeButton {
     this.addEventListener("click", e => {
       const media = this.media;
 
-      console.log(document.webkitFullscreenElement);
-
-      if (this.mediaChrome == document.fullscreenElement) {
-        document.exitFullscreen();
+      if (this.mediaChrome == document[fsApi['fullscreenElement']]) {
+        document[fsApi['exitFullscreen']]();
       } else {
         if (document.pictureInPictureElement) {
           // Should be async
           document.exitPictureInPicture();
         }
 
-        this.mediaChrome.requestFullscreen();
+        this.mediaChrome[fsApi['requestFullscreen']]();
       }
     });
 
-    document.addEventListener("fullscreenchange", () => {
-      if (this.mediaChrome == document.fullscreenElement) {
+    document.addEventListener(fsApi['fullscreenchange'], () => {
+      if (this.mediaChrome == document[fsApi['fullscreenElement']]) {
         this.icon = exitFullscreenIcon;
       } else {
         this.icon = enterFullscreenIcon;

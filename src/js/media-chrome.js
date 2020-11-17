@@ -32,6 +32,11 @@ template.innerHTML = `
       visibility: visible;
     }
 
+    :-webkit-full-screen {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
     /* Hide controls when inactive and not paused */
     #container.inactive:not(.paused) ::slotted(*) {
       opacity: 0;
