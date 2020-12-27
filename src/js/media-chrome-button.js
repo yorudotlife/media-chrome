@@ -1,3 +1,9 @@
+/*
+  Parent class for all media button elements
+
+  Taking design cues from how buttons work with forms
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+*/
 import MediaChromeHTMLElement from './media-chrome-html-element.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
