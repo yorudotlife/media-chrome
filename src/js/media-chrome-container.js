@@ -55,10 +55,23 @@ template.innerHTML = `
       opacity: 0;
       transition: opacity 1s;
     }
+
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
   </style>
   <slot name="media"></slot>
   <div id="container">
     <slot></slot>
+  </div>
+  <div id="overlay">
+    <slot name="overlay"></slot>
   </div>
 `;
 

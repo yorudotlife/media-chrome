@@ -1,6 +1,4 @@
 import MediaChromeHTMLElement from './media-chrome-html-element.js';
-import './media-chrome-menuitem.js';
-import './media-chrome-submenu-menuitem.js';
 import { defineCustomElement } from './utils/defineCustomElement.js';
 
 const template = document.createElement('template');
@@ -25,7 +23,9 @@ class MediaChromeMenu extends MediaChromeHTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  mediaSetCallback(media) { }
+  mediaSetCallback(media) {
+
+  }
 }
 
 defineCustomElement('media-chrome-menu', MediaChromeMenu);

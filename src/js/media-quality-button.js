@@ -5,7 +5,7 @@ import { defineCustomElement } from './utils/defineCustomElement.js';
   <media-quality-rate-button rates="1,1.5,2">
 */
 
-class QualityLevelList extends EventEmitter {
+class QualityLevelList extends EventTarget {
   constructor() {
     super();
   }
@@ -15,7 +15,7 @@ class QualityLevelList extends EventEmitter {
   }
 
   removeLevel(index) {
-    
+
   }
 }
 
@@ -42,9 +42,7 @@ class MediaQualityMenu extends MediaChromeButton {
       return;
     }
 
-    this._listChangeHandler = () => {
-      this.
-    };
+    this._listChangeHandler = () => {};
     this._addLevelHandler = () => {};
     this._removeLevelHandler = () => {};
 
