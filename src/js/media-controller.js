@@ -165,9 +165,9 @@ class MediaController extends MediaContainer {
 
     // Pass media state to child and associated control elements
     this._mediaStatePropagators = {
-      'play,pause': () => {
-        this.propagateMediaState(MediaUIAttributes.MEDIA_PAUSED, this.media.paused);
-      },
+      // 'play,pause': () => {
+      //   this.propagateMediaState(MediaUIAttributes.MEDIA_PAUSED, this.media.paused);
+      // },
       'volumechange': () => {
         const { muted, volume } = this.media;
 
