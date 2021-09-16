@@ -40,8 +40,8 @@ class MediaController extends MediaContainer {
 
     // Capture request events from internal controls
     const mediaUIEventHandlers = {
-      MEDIA_PLAY_REQUEST: () => this.media.play(),
-      MEDIA_PAUSE_REQUEST: () => this.media.pause(),
+      // MEDIA_PLAY_REQUEST: () => this.media.play(),
+      // MEDIA_PAUSE_REQUEST: () => this.media.pause(),
       MEDIA_MUTE_REQUEST: () => this.media.muted = true,
       MEDIA_UNMUTE_REQUEST: () => {
         const media = this.media;

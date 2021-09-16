@@ -165,17 +165,17 @@ class MediaContainer extends window.HTMLElement {
     }
 
     // Toggle play/pause with clicks on the media element itself
-    this._mediaClickPlayToggle = e => {
-      console.log("_mediaClickPlayToggle")
-      console.log(e.composed);
-      console.log(e.composedPath());
-  
-      const eventName = media.paused
-        ? MediaUIEvents.MEDIA_PLAY_REQUEST
-        : MediaUIEvents.MEDIA_PAUSE_REQUEST;
-      this.dispatchEvent(new window.CustomEvent(eventName, { composed: true, bubbles: true, cancelable: true }));
-    }
-    media.addEventListener('click', this._mediaClickPlayToggle, true);
+    // this._mediaClickPlayToggle = e => {
+    //   console.log("_mediaClickPlayToggle")
+    //   console.log(e.composed);
+    //   console.log(e.composedPath());
+
+    //   const eventName = media.paused
+    //     ? MediaUIEvents.MEDIA_PLAY_REQUEST
+    //     : MediaUIEvents.MEDIA_PAUSE_REQUEST;
+    //   this.dispatchEvent(new window.CustomEvent(eventName, { composed: true, bubbles: true, cancelable: true }));
+    // }
+    // media.addEventListener('click', this._mediaClickPlayToggle, true);
 
     return true;
   }
@@ -251,6 +251,6 @@ class MediaContainer extends window.HTMLElement {
 
 // Aliasing media-controller to media-container in main index until we know
 // we're not breaking people with the change.
-defineCustomElement('media-container-temp', MediaContainer);
+defineCustomElement('media-container-slider', MediaContainer);
 
 export default MediaContainer;
