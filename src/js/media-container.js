@@ -170,7 +170,7 @@ class MediaContainer extends window.HTMLElement {
       const eventName = media.paused
         ? MediaUIEvents.MEDIA_PLAY_REQUEST
         : MediaUIEvents.MEDIA_PAUSE_REQUEST;
-      this.dispatchEvent(new window.CustomEvent(eventName, { composed: true, bubbles: true }));
+      this.dispatchEvent(new window.CustomEvent(eventName, { composed: true, bubbles: true, cancelable: true }));
     }
     media.addEventListener('click', this._mediaClickPlayToggle, true);
 
